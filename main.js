@@ -11,6 +11,7 @@ TodoList.prototype.addTodo = function (todo) {
 TodoList.prototype.removeTodo = function (todo) {
   var index = this.todos.indexOf(todo);
   this.todos.splice(index, 1);
+  render();
 };
 
 var todoList = new TodoList();
@@ -25,6 +26,9 @@ var render = function () {
     var todo = todoList.todos[i];
     var li = document.createElement("li");
     li.textContent = todo;
+    li.addEventListener("click", function () {
+      todoList.removeTodo(todo);
+    });
     todos.appendChild(li);
   }
 };
@@ -39,12 +43,9 @@ var addTodo = function (event) {
   render();
 };
 
-input.addEventListener("keyup", function(event) {
+input.addEventListener("keyup", function (event) {
   if (event.key === "Enter") {
     addTodo();
   }
 });
 button.addEventListener("click", addTodo);
-
-
-
