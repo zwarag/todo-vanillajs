@@ -1,5 +1,3 @@
-import './style.css';
-
 var TodoList = function () {
   this.todos = [];
 };
