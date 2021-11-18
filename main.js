@@ -38,6 +38,9 @@ var addTodo = function (event) {
     event.preventDefault();
   }
   var todo = input.value;
+  if (input.value.length === 0) {
+    return;
+  }
   todoList.addTodo(todo);
   input.value = "";
   render();
